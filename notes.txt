@@ -1,0 +1,4 @@
+- untuk get single news, ubah dari by id jadi by title
+- untuk publish fitur
+- untuk upload thumbnail, tny ke derry dulu
+- fix delete api
