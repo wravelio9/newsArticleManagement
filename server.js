@@ -2,10 +2,12 @@ import express from "express";
 import cors from 'cors'
 import dotenv from 'dotenv'
 import logger from "./src/middleware/logger.js";
-import router from "./src/routes/index.js";
-import notfound from "./src/middleware/notfound.js";
-import errorHandler from "./src/middleware/error.js";
+import router from "./src/routes/apirouter.js";
+import notfound from "./src/middleware/errorHandling/notfound.js";
+import errorHandler from "./src/middleware/errorHandling/error.js";
 import upload from "./src/middleware/upload.js";
+import userRouter from "./src/routes/user.routes.js";
+import jwt from "jsonwebtoken"
 
 dotenv.config();
 const app = express();
@@ -22,6 +24,7 @@ app.set("view engine", "ejs")
 app.use('/images', express.static('images'));
 
 // // Use routes
+app.use(userRouter)
 app.use("/api", router) 
 
 // Use error handler
